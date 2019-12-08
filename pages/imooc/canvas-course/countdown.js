@@ -1,10 +1,10 @@
-var WINDOW_WIDTH = 1024;
-var WINDOW_HEIGHT = 768;
-var RADIUS = 8;
-var MARGIN_TOP = 60;
-var MARGIN_LEFT = 30;
+var WINDOW_WIDTH = document.body.clientWidth
+var WINDOW_HEIGHT = document.body.clientHeight
+var MARGIN_LEFT = Math.round(WINDOW_WIDTH /10);
+var RADIUS = Math.round(WINDOW_WIDTH * 4 / 5 / 108)-1
+var MARGIN_TOP = Math.round(WINDOW_HEIGHT /5);
 
-const endTime = new Date(2014,6,11,18,47,52);
+const endTime = new Date(2019,11,11,18,47,52);
 var curShowTimeSeconds = 0
 
 var balls = [];
@@ -76,7 +76,7 @@ function update(){
 
     updateBalls();
 
-    console.log( balls.length)
+    // console.log( balls.length)
 }
 
 function updateBalls(){
