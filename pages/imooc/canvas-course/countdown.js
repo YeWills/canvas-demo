@@ -4,7 +4,7 @@ var MARGIN_LEFT = Math.round(WINDOW_WIDTH /10);
 var RADIUS = Math.round(WINDOW_WIDTH * 4 / 5 / 108)-1
 var MARGIN_TOP = Math.round(WINDOW_HEIGHT /5);
 
-const endTime = new Date(2019,11,11,18,47,52);
+const endTime = 270000000 + (new Date()).getTime();
 var curShowTimeSeconds = 0
 
 var balls = [];
@@ -31,7 +31,7 @@ window.onload = function(){
 
 function getCurrentShowTimeSeconds() {
     var curTime = new Date();
-    var ret = endTime.getTime() - curTime.getTime();
+    var ret = endTime - curTime.getTime();
     ret = Math.round( ret/1000 )
 
     return ret >= 0 ? ret : 0;
@@ -131,7 +131,7 @@ function render( cxt ){
 
     renderDigit( MARGIN_LEFT , MARGIN_TOP , parseInt(hours/10) , cxt )
     renderDigit( MARGIN_LEFT + 15*(RADIUS+1) , MARGIN_TOP , parseInt(hours%10) , cxt )
-    renderDigit( MARGIN_LEFT + 30*(RADIUS + 1) , MARGIN_TOP , 10 , cxt )
+    renderDigit( MARGIN_LEFT + 30*(RADIUS+1) , MARGIN_TOP , 10 , cxt )
     renderDigit( MARGIN_LEFT + 39*(RADIUS+1) , MARGIN_TOP , parseInt(minutes/10) , cxt);
     renderDigit( MARGIN_LEFT + 54*(RADIUS+1) , MARGIN_TOP , parseInt(minutes%10) , cxt);
     renderDigit( MARGIN_LEFT + 69*(RADIUS+1) , MARGIN_TOP , 10 , cxt);
