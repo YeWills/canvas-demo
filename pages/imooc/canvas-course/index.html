@@ -24,8 +24,11 @@
         curShowTimeSeconds = getCurrentShowTimeSeconds()
             setInterval(
                 function(){
+                    //渲染时间的显示
                     renderTimes( context );
+                    //渲染小球的显示
                     renderBall( context );
+                    //更新时间 和 小球数据，以备下次时间和小球渲染使用
                     updateBallDatas();
                 } , 50
             );

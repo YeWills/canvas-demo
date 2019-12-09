@@ -49,6 +49,7 @@ function updateBalls(){
 
     for( var i = 0 ; i < balls.length ; i ++ ){
 
+        //模拟抛物线路径
         balls[i].x += balls[i].vx;
         balls[i].y += balls[i].vy;
         balls[i].vy += balls[i].g;
@@ -62,7 +63,7 @@ function updateBalls(){
 //只取屏幕内的元素
     var cnt = 0
     for( var i = 0 ; i < balls.length ; i ++ ){
-        //满足下面情况说明在屏幕上
+        //碰撞检测--满足下面情况说明在屏幕上
         if( balls[i].x + RADIUS > 0 && balls[i].x -RADIUS < WINDOW_WIDTH ){
             balls[cnt++] = balls[i]
         }
