@@ -33,4 +33,4 @@ var nameFilterKey = floderName
       });
 ```
 ### 注意事项
-本项目利用的是koa-static给pages目录提供本地服务，因此在pages根目录下必须定义一个index.hmtl。
+本项目利用的是koa-static给pages目录提供本地服务，因此在pages根目录下必须定义一个index.hmtl,并且所以html依赖的静态资源或js框架，必须放置于此目录下，以便被纳入koa-static启动的本地服务器中。
