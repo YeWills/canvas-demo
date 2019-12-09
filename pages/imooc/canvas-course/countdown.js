@@ -98,8 +98,10 @@ function updateBalls(){
 //只取屏幕内的元素
     var cnt = 0
     for( var i = 0 ; i < balls.length ; i ++ ){
-        if( balls[i].x + RADIUS > 0 && balls[i].x -RADIUS < WINDOW_WIDTH )
-        balls[cnt++] = balls[i]
+        //满足下面情况说明在屏幕上
+        if( balls[i].x + RADIUS > 0 && balls[i].x -RADIUS < WINDOW_WIDTH ){
+            balls[cnt++] = balls[i]
+        }
     }
 //balls数组前面的元素，都是最先生成的，因此，也应该最先被删除
     while( balls.length > cnt ){
@@ -115,9 +117,11 @@ function addBalls( x , y , num ){
                 var aBall = {
                     x:x+j*2*(RADIUS+1)+(RADIUS+1),
                     y:y+i*2*(RADIUS+1)+(RADIUS+1),
+                    //g是重力加速度，只影响在垂直方向的速度，Math.random() 创造每个不同小球不同的重力加速度，产生不同的速度，让每个小球运动更加自然
                     g:1.5+Math.random(),
-                    //Math.pow( -1 , Math.ceil( Math.random()*1000 ) ) * 4 其实就是-4
+                    //vx小球在x 水平方向的速度，Math.pow( -1 , Math.ceil( Math.random()*1000 ) ) * 4 其实就是随机生成-4和4
                     vx:Math.pow( -1 , Math.ceil( Math.random()*1000 ) ) * 4,
+                    //vx小球在y 垂直方向的速度，让小球有一个向上抛的动作。
                     vy:-5,
                     color: colors[ Math.floor( Math.random()*colors.length ) ]
                 }
@@ -136,6 +140,7 @@ function render( cxt ){
 
     //渲染时间数字
     renderDigit( MARGIN_LEFT , MARGIN_TOP , parseInt(hours/10) , cxt )
+    //15*(RADIUS+1) 这15个间距当中，其中的一个 (RADIUS+1) 为数字之间的间距空隙。
     renderDigit( MARGIN_LEFT + 15*(RADIUS+1) , MARGIN_TOP , parseInt(hours%10) , cxt )
     renderDigit( MARGIN_LEFT + 30*(RADIUS+1) , MARGIN_TOP , 10 , cxt )
     renderDigit( MARGIN_LEFT + 39*(RADIUS+1) , MARGIN_TOP , parseInt(minutes/10) , cxt);
