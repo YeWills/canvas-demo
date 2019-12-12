@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html style="height:100%">
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+
+<body style="height:100%">
+    <canvas id="canvas" style="height:100%">
+        当前浏览器不支持Canvas，请更换浏览器后再试
+    </canvas>
+    <script>
+
+        window.onload=function(){
+            var canvas = document.getElementById('canvas');
+            canvas.width = 800;
+            canvas.height = 800;
+            var context = canvas.getContext('2d');
+
+            context.lineWidth = 10;
+            drawStar(context, 150, 300, 400, 400)
+            //rotate旋转角度
+            //r,R,x,y 小圆，大圆，x方向偏移量，y方向偏移量
+        function drawStar(cxt,r,R,x,y,rotate=0){
+            cxt.beginPath();
+            for(var i = 0;i<5;i++){
+                cxt.lineTo(Math.cos((18 + i*72 - rotate)/180 * Math.PI) * R + x,
+                -Math.sin((18 + i*72 - rotate)/180 * Math.PI) * R + y);
+                cxt.lineTo(Math.cos((54 + i*72 - rotate)/180 * Math.PI) * r + x,
+                -Math.sin((54 + i*72 - rotate)/180 * Math.PI) * r + y);
+            }
+            context.closePath();
+            context.stroke();
+        }
+        }
+
+      
+
+    </script>
+
+
+</body>
+
+</html>
