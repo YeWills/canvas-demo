@@ -5,7 +5,7 @@ require('./server/static-best.js') //主域名访问：最佳方式
 // 目录生成需要设置 爬取目录readpath 与 爬取数据存储目录outportJson
 var readFile = false;
 
-var floderName = 'imooc'
+var floderName = 'canvas-master'
 var readpath = `/pages/${floderName}`
 var outportJson = `pages/${floderName}/file.json`
 var nameFilterKey = floderName
