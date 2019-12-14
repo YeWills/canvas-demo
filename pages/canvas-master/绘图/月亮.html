@@ -26,9 +26,11 @@
     function drawMoon(ctx,x,y,r){
       ctx.beginPath();
       ctx.save();
+      //translate 平移改变位置
       ctx.translate(x,y);
+      //放大 将下面代码所有的宽高进行放大
       ctx.scale(r,r)
-      drawMoonPath(ctx,r);
+      drawMoonPath(ctx);
       ctx.restore();
     }
     
