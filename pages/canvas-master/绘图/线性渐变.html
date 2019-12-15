@@ -20,15 +20,15 @@
   $(function(){
     var c = $('#canvas')[0];
     var context=c.getContext('2d');//用context进行绘制
+    //起始点坐标100 100， 终点 100 300；
     var linear = context.createLinearGradient(100,100,100,300);
+    //addColorStop 第一参数是浮点数，取值范围为0-1，0表示起点，1表示终点
     linear.addColorStop(0.0,'green');
     linear.addColorStop(0.5,'yellow');
-    linear.addColorStop(1.0,'red');
+    linear.addColorStop(1.0,'blue');
     context.fillStyle=linear;
-    context.fillRect(100,100,600,400);
-    context.fillRect(400,400,600,600);
-    context.fillStyle='#eee';
-    // context.fillRect(300,300,300,300);
+    context.fillRect(100,100,300,200);
+    　
   })
 </script>
 </html>

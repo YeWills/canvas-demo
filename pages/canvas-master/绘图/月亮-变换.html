@@ -21,16 +21,33 @@
   $(function(){
     var c = $('#canvas')[0];
     var context=c.getContext('2d');//用context进行绘制
-    drawMoon(context);
-    function drawMoon(ctx){
+    // context.
+    drawMoon(context,100,100,50);
+    function drawMoon(ctx,x,y,r){
       ctx.beginPath();
-      ctx.arc(100,100,50,0.5*Math.PI,1.5*Math.PI,true);
-      ctx.moveTo(100,50);
-      ctx.quadraticCurveTo(150,100,100,150);
-      ctx.closePath();
-      ctx.fillStyle='yellow';
-      ctx.fill();
+      ctx.save();
+      //translate 平移改变位置
+      ctx.translate(x,y);
+      //放大 将下面代码所有的宽高进行放大
+      ctx.scale(r,r)
+      drawMoonPath(ctx);
+      ctx.restore();
     }
+    
+    function drawMoonPath(ctx){
+       ctx.arc(0,0,1,0.5*Math.PI,1.5*Math.PI,true);
+       ctx.moveTo(0,-1);
+       ctx.quadraticCurveTo(1,0,0,1);
+       ctx.closePath();
+    ctx.fillStyle='yellow';
+    ctx.fill();
+    
+    
+    
+    }
+   
+    // context.arc(100,100,10,1.5*Math.PI,2.5*Math.PI);
+    
   })
 </script>
 </html>
