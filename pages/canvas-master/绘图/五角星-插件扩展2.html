@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>第一课</title>
+  <style>
+  #canvas{
+    border:1px solid #aaa;
+    display: block;
+    margin: 50px auto;
+  }
+  </style>
+</head>
+<body>
+<h3>不指定canvas大小时，默认Rpx宽，150px高</h3>
+    
+<canvas id="canvas" width="1024" height="768">如果不支持，我会显示</canvas>
+</body>
+<script type="text/javascript" src="jquery.min.js"></script>
+<script type="text/javascript">
+  $(function(){
+    var c = $('#canvas')[0];
+    var context=c.getContext('2d');//用context进行绘制
+    CanvasRenderingContext2D.prototype.lastMoveToLoc = {};
+    var originMoveto = CanvasRenderingContext2D.prototype.moveTo;
+    CanvasRenderingContext2D.prototype.moveTo = function(x,y){
+      originMoveto.apply(context, [x, y]);
+      this.lastMoveToLoc.x = x;
+      this.lastMoveToLoc.y = y;
+    }
+
+    CanvasRenderingContext2D.prototype.drawStar = function(r,R,rot){
+      this.beginPath();
+      var x = this.lastMoveToLoc.x;
+      var y = this.lastMoveToLoc.y;
+      var rot1 = rot || 0;
+      for(var i =0;i<=5;i++){
+        this.lineTo(Math.cos((18+i*72-rot1)/180*Math.PI)*R+x,-Math.sin((18+i*72-rot1)/180*Math.PI)*R+y)
+        this.lineTo(Math.cos((54+i*72-rot1)/180*Math.PI)*r+x,-Math.sin((54+i*72-rot1)/180*Math.PI)*r+y)
+      }
+      this.closePath();
+      this.fill();
+    }
+    context.fillStyle = 'blue';
+    context.moveTo(400, 400);
+    context.drawStar(150,300,30);
+  })
+</script>
+</html>
