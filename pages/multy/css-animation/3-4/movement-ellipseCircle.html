@@ -19,9 +19,7 @@
 		  width:150px;
 		  height:142px;
 		  margin: 0 auto;
-		  -webkit-transform-origin:center 150%;
 		  transform-origin:center 150%;
-		  -webkit-animation:circle 2s infinite linear;
 		  animation:circle 2s infinite linear;
 		}
 		.butterfly img{
@@ -30,26 +28,22 @@
 		}
 		figure{
 		  margin-left: 200px;
-		  -webkit-animation:updown 1s infinite ease-in-out alternate;
 		  animation:updown 1s infinite ease-in-out alternate;
 		  /* -webkit-animation-delay:-.5s;  */
 		}
-		@-webkit-keyframes updown{
+		@keyframes updown{
 		    to{
-		      -webkit-transform:translateY(200px);
 		      transform:translateY(200px);
 		    }
 		}
-		@-webkit-keyframes circle{
+		@keyframes circle{
 		  to{
-		  	-webkit-transform:rotate(-1turn);
 		    transform:rotate(-1turn);
 		  }
 		}
 	</style>
 </head>
 <body>
-	<h1>请使用webkit内核标准浏览器查看效果</h1>
 	<figure>
 	  <div class="butterfly">
 	    <img src="http://p7.qhimg.com/t01a4c54ef5309e561c.png" alt="" />
