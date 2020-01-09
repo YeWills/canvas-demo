@@ -25,14 +25,13 @@
 			width: 200px;
 			height: 200px;
 			border-radius: 100%;
-			background-color: #292a38;
+			background-color: #03A9F4;
 			margin: 50px auto;
 		}
 		.pointer li.circle {
 			position: absolute;
 			top: 50%;
 			left: 50%;
-			transform-origin: left center;
 			background: #fff;
 			width: 10px;
 			height: 10px;
@@ -41,18 +40,6 @@
 			margin-left: -5px;
 		}
 
-		/*演示*/
-		/*.line-demo {
-			position: absolute;
-			left: 50%;
-			top: 50%;
-			transform:rotate(-60deg) translate(75px, -50%);
-			transform-origin: left center;
-			width: 20px;
-			height: 10px;
-			background-color: red;
-			z-index: 1;	
-		}*/
 
 		/*刻度*/
 		.line-hour li,
@@ -170,10 +157,10 @@
 
 			var strHtml = '';
 			for(var i=1; i<=12; i++){
-				var myAngle = (i-3)/6 * Math.PI;
+				var myAngle = i/6 * Math.PI;
 
-				var myX = radius + radius*Math.cos(myAngle), // x=r+rcos(θ)
-					myY = radius + radius*Math.sin(myAngle); // y=r+rsin(θ)
+				var myX = radius + radius*Math.sin(myAngle),
+					myY = radius - radius*Math.cos(myAngle);
 
 				strHtml += '<li style="left:' + myX + 'px; top:'+ myY +'px">' + i + '</li>';
 			}
@@ -195,8 +182,8 @@
 				    min = now.getMinutes(),
 				    sec = now.getSeconds();
 
-				var secAngle = sec*6 - 90,  // s*6-90
-				    minAngle = min*6 + sec*0.1 - 90,  // m*6+s*0.1-90
+				var secAngle = sec*6 - 90,  
+				    minAngle = min*6 - 90,  
 				    hourAngle = hour*30 + min*0.5 - 90;  // h*30+m*0.5 - 90
 
 				domSec.css('transform', 'rotate(' + secAngle + 'deg)');
