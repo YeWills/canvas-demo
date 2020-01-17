@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<title>慕课网-Resizable</title>
+
+<style type="text/css">
+	body{margin:0px;padding:50px;font-size:14px;color:#333}
+	
+	.panel{width:400px;height:240px;border:1px solid #ccc;position:relative;min-width:40px;min-height:24px;}
+	.panel .title{background:#eee;text-align:center;line-height:30px;border:1px solid #fff;font-weight:bold}
+	
+	.ui-Resizable-right{
+		position:absolute;
+		right:0px;
+		top:0px;
+		width:10px;
+		height:100%;
+		cursor: e-resize;
+		}
+	.ui-Resizable-bottom{
+		position:absolute;
+	    right:0px;
+	    bottom:0px;
+	    width:100%;
+	    height:10px;
+	    cursor: s-resize;}
+	.ui-Resizable-lean{
+		position:absolute;
+	    right:0px;
+	    bottom:0px;
+	    width:20px;
+	    height:20px;
+	    cursor: nw-resize;}
+	
+</style>
+</head>
+<body onselectstart="return false;">
+
+<h1>慕课网案例特效：Resizable — 可调大小面板</h1>
+
+<div class="panel" id="ui-Resizable" onselectstart="return false;" >
+	<div class="title" >Resizable Panel</div>
+
+</div>
+
+<script type="text/javascript">
+
+	//	ctrl ：控制元素，panel ：面板 ， type 类型
+	var panelDom , mouseType ;
+	let lastPosition={};
+	function getMoveDistance(current, last){
+		const distance = {
+			x: current.x - last.x,
+			y: current.y - last.y
+		}
+		return distance;
+	}
+
+	function onMousemove(e){
+		var e = e || window.event;
+		lastPosition.x = e.pageX;
+		lastPosition.y = e.pageY;
+		document.addEventListener('mousemove', mousemoveHandle);
+		if(e.target.className.includes('ui-Resizable-right')){
+			mouseType = 'movehorizontal';
+		}
+		if(e.target.className.includes('ui-Resizable-bottom')){
+			mouseType = 'moveVertical';
+		}
+		if(e.target.className.includes('ui-Resizable-lean')){
+			mouseType = 'moveLean';
+		}
+	}
+	
+	//	鼠标弹起处理
+	document.onkeyup = document.onmouseup = function(e){
+		document.removeEventListener('mousemove', mousemoveHandle)
+	}
+	
+	//	设置某个面板支持调整大小
+	function Resizable( panelId ){
+		panelDom = document.getElementById(panelId);
+		['right', 'bottom', 'lean'].forEach(dragDomType=>{
+			const dragDom = document.createElement("div");
+			dragDom.class = dragDom.className   = `ui-Resizable-${dragDomType} ui-Resizable-ctrl`;
+			panelDom.appendChild(dragDom);
+			dragDom.addEventListener('mousedown', onMousemove);
+		})
+	}
+	Resizable('ui-Resizable');
+
+	function mousemoveHandle(event){
+		var e = e || window.event;
+		const currentPosition = {
+			x: e.pageX,
+			y: e.pageY
+		}
+		const moveDistance = getMoveDistance(currentPosition, lastPosition);
+		lastPosition = currentPosition;
+        //2 是panel的border宽度1px * 2
+		let newPanelWidth = panelDom.offsetWidth - 2 + moveDistance.x;
+		let newPanelHeight = panelDom.offsetHeight - 2 + moveDistance.y;
+		newPanelWidth = Math.max(newPanelWidth, 150);
+		newPanelHeight = Math.max(newPanelHeight, 50);
+		switch(mouseType){
+			case 'movehorizontal':
+				panelDom.style.width = newPanelWidth + 'px';
+				break;
+			case 'moveVertical':
+				panelDom.style.height = newPanelHeight + 'px';
+				break;
+			case 'moveLean':
+				panelDom.style.width = newPanelWidth + 'px';
+				panelDom.style.height = newPanelHeight + 'px';
+		}
+	}
+
+	
+
+</script>
+</body>
+</html>
