@@ -1,0 +1,66 @@
+.tuzi {
+  width: 200px;
+  height: 200px;
+  animation: run 0.2s steps(6) infinite;
+  background: url(./i/tuzi.png) no-repeat;
+}
+.tuzi0 {
+  width: 200px;
+  height: 200px;
+  animation: run2 0.2s steps(12) infinite;
+  background: url(./i/tuzi.png) no-repeat;
+}
+.tuzi1 {
+  width: 200px;
+  height: 200px;
+  animation: run 0.2s linear infinite;
+  background: url(./i/tuzi.png) no-repeat;
+}
+.tuzi2 {
+  width: 200px;
+  height: 200px;
+  animation: run 0.2s linear infinite;
+  background: url(./i/tuzi.png) no-repeat;
+}
+
+.box{
+  animation-duration: 0.2s;
+  position: relative;
+}
+.box::after{
+  right: -160px;
+  top: 121px;
+  color: blue;
+  position: absolute;
+}
+.tuzi::after{
+  content: 'run 0.2s steps(6)';
+}
+.tuzi0::after{
+  content: 'run2 0.2s steps(12)';
+}
+.tuzi1::after{
+  content: 'run 0.2s linear';
+}
+.tuzi2::after{
+  content: 'run 0.2s linear';
+}
+
+.tuzi2.box{
+  animation-duration: 3s;
+}
+
+@keyframes run {
+  50% {
+    background-position-x: -1200px;
+  }
+  100% {
+    background-position-x: -2400px;
+  }
+}
+
+@keyframes run2 {
+  100% {
+    background-position-x: -2400px;
+  }
+}
