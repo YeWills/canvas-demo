@@ -1,26 +1,23 @@
 .marquee {
   overflow: hidden;
 }
+
+.marquee, .content, .list{
+  height: 400px;
+}
 .marquee, .list{
   width: 600px;
 }
-
 .content{
   /* width 600px * 3 */
   width: 1800px;
   animation: run 9s linear infinite;
 }
-
 @keyframes run{
   100%{
     transform: translateX(-1800px);
   }
 }
-
-.marquee, .content, .list{
-  height: 400px;
-}
-
 
 .content {
   display: -webkit-box;
