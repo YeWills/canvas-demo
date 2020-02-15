@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    .loading {
+        width: 108px;
+        height: 108px;
+        background: url(../css/i/loading.png) no-repeat;
+        border-radius: 50%;
+        -webkit-animation: round 1s steps(12) 3;
+                animation: round 1s steps(12) 3;
+    }
+    @keyframes round {
+        100% {
+            -webkit-transform: rotate(360deg);
+                    transform: rotate(360deg);
+        }
+    }
+    </style>
+</head>
+<body>
+    <div class="loading"></div>
+</body>
+<script>
+    let runstart = ()=>{console.log('runstart')};
+    let runend = ()=>{console.log('runend')};
+    let intertation = ()=>{console.log('animationiteration')}
+    let $loading = document.querySelector('.loading');
+    $loading.addEventListener('animationstart',runstart);
+    $loading.addEventListener('webkitAnimationStart',runstart);
+    $loading.addEventListener('animationend',runend)
+    $loading.addEventListener('animationiteration',intertation)
+</script>
+</html>

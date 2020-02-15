@@ -17,6 +17,7 @@ body, html {
   width: 60px;
   height: 60px;
   background: url(./i/hongbao.png) no-repeat;
+ /* 因为背景图片尺寸太大，背景图片宽度自适应，高度设置为60px */
   background-size: auto 60px;
 }
 
@@ -32,6 +33,7 @@ body, html {
   }
   100% {
     opacity: 0;
+    /* 可以设置translateY为0，设置为-10px有立体效果 */
     -webkit-transform: translate3d(10px, 100vh, -10px);
             transform: translate3d(10px, 100vh, -10px);
   }
