@@ -1,0 +1,40 @@
+.marquee {
+  overflow: hidden;
+}
+.marquee, .list{
+  width: 600px;
+}
+
+.content{
+  /* width 600px * 3 */
+  width: 1800px;
+  animation: run 9s linear infinite;
+}
+
+@keyframes run{
+  100%{
+    transform: translateX(-1800px);
+  }
+}
+
+.marquee, .content, .list{
+  height: 400px;
+}
+
+
+.content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.content .list {
+  overflow: hidden;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+}
+
+.content .list img {
+  width: 100%;
+  height: 100%;
+}
